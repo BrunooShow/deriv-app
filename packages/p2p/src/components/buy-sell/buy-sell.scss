@@ -27,7 +27,7 @@
             width: auto;
             height: auto;
             padding: 0;
-            max-height: 55.3rem;
+            max-height: initial;
             min-width: 44rem;
         }
         & .dc-dialog__content {
@@ -68,7 +68,7 @@
             padding: 2.4rem;
 
             &_centre {
-                padding: 0 4rem;
+                padding: 0 8rem;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -85,20 +85,6 @@
                 font-size: var(--text-size-xs);
                 margin-bottom: 1.6rem;
             }
-            &--list {
-                font-size: var(--text-size-xs);
-                line-height: 1.43;
-
-                & li {
-                    list-style-type: disc;
-                    margin: 0.8rem 1.8rem 0;
-                }
-            }
-            &--ps {
-                margin-top: 1.6rem;
-                font-size: var(--text-size-xs);
-                align-self: flex-start;
-            }
         }
         &-field {
             margin-bottom: 0 !important;
@@ -109,7 +95,7 @@
             }
             &_wrapper {
                 display: flex;
-                margin-bottom: 3.4rem;
+                margin-bottom: 1.6rem;
                 align-items: center;
             }
             &--textarea {
