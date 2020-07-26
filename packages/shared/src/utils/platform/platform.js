@@ -12,18 +12,12 @@ export const isMT5 = () =>
     /^\/mt5/.test(window.location.pathname) ||
     (/^\/(br_)/.test(window.location.pathname) && window.location.pathname.split('/')[2] === 'mt5');
 
-export const getPlatformHeader = routing_history => {
-    if (isBot() || isNavigationFromPlatform(routing_history, routes.bot)) return 'DBot';
-    if (isMT5() || isNavigationFromPlatform(routing_history, routes.mt5)) return 'DMT5';
-    if (isNavigationFromPlatform(routing_history, routes.smarttrader)) return 'SmartTrader';
-    return 'DTrader';
+export const getPlatformHeader = routing_history => {s
+    return 'TEEDBot';
 };
 
 export const getPlatformIcon = routing_history => {
-    if (isBot() || isNavigationFromPlatform(routing_history, routes.bot)) return 'IcBrandDbot';
-    if (isMT5() || isNavigationFromPlatform(routing_history, routes.mt5)) return 'IcBrandDmt5';
-    if (isNavigationFromPlatform(routing_history, routes.smarttrader)) return 'IcBrandSmarttrader';
-    return 'IcBrandDtrader';
+    return 'IcBrandDbot';
 };
 
 export const isNavigationFromPlatform = (app_routing_history, platform_route) => {

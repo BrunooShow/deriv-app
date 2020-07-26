@@ -75,13 +75,13 @@ export class AccountActions extends React.Component {
                         </React.Suspense>
                     </MobileWrapper>
                     <DesktopWrapper>
-                        <ToggleNotifications
+                        {/* <ToggleNotifications
                             count={notifications_count}
                             is_visible={is_notifications_visible}
                             toggleDialog={toggleNotifications}
                             tooltip_message={localize('View notifications')}
-                        />
-                        <Popover
+                        /> */}
+                        {/* <Popover
                             classNameBubble='account-settings-toggle__tooltip'
                             alignment='bottom'
                             message={localize('Manage account settings')}
@@ -89,7 +89,7 @@ export class AccountActions extends React.Component {
                             <BinaryLink className='account-settings-toggle' to={routes.personal_details}>
                                 <Icon icon='IcUserOutline' />
                             </BinaryLink>
-                        </Popover>
+                        </Popover> */}
                         <React.Suspense fallback={<div />}>
                             <AccountInfo
                                 acc_switcher_disabled_message={acc_switcher_disabled_message}
@@ -115,15 +115,6 @@ export class AccountActions extends React.Component {
                                     primary
                                 />
                             </div>
-                        )}
-                        {currency && (
-                            <Button
-                                className='acc-info__button'
-                                has_effect
-                                text={localize('Deposit')}
-                                onClick={onClickDeposit}
-                                primary
-                            />
                         )}
                     </DesktopWrapper>
                 </React.Fragment>

@@ -24,29 +24,12 @@ const isProduction = () => {
 
 const binary_desktop_app_id = 14473;
 
-const getAppId = () => {
+export const getAppId = () => {
     let app_id = null;
-    const user_app_id = ''; // you can insert Application ID of your registered application here
+    const user_app_id = '23035'; // you can insert Application ID of your registered application here
     const config_app_id = window.localStorage.getItem('config.app_id');
-    if (config_app_id) {
-        app_id = config_app_id;
-    } else if (/desktop-app/i.test(window.location.href) || window.localStorage.getItem('config.is_desktop_app')) {
-        window.localStorage.removeItem('config.default_app_id');
-        window.localStorage.setItem('config.is_desktop_app', 1);
-        app_id = binary_desktop_app_id;
-    } else if (user_app_id.length) {
-        window.localStorage.setItem('config.default_app_id', user_app_id);
-        app_id = user_app_id;
-    } else if (/staging\.deriv\.app/i.test(window.location.hostname)) {
-        window.localStorage.removeItem('config.default_app_id');
-        app_id = 16303; // it's being used in endpoint chrome extension - please do not remove
-    } else if (/localhost/i.test(window.location.hostname)) {
-        app_id = 17044;
-    } else {
-        window.localStorage.removeItem('config.default_app_id');
-        const current_domain = getCurrentProductionDomain();
-        app_id = domain_app_ids[current_domain] || 16929;
-    }
+    window.localStorage.setItem('config.default_app_id', user_app_id);
+    app_id = user_app_id;
     return app_id;
 };
 

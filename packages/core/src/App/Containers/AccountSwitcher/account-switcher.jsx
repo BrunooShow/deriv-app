@@ -302,58 +302,6 @@ class AccountSwitcher extends React.Component {
                             ))}
                     </div>
                 </AccountWrapper>
-                {this.props.is_mt5_allowed && (
-                    <React.Fragment>
-                        <div className='acc-switcher__separator acc-switcher__separator--no-padding' />
-                        <AccountWrapper
-                            header={<Localize i18n_default_text='DMT5 Accounts' />}
-                            is_visible={this.state.is_demo_dmt5_visible}
-                            toggleVisibility={() => {
-                                this.toggleVisibility('demo_dmt5');
-                            }}
-                        >
-                            {this.props.is_loading_mt5 ? (
-                                <div className='acc-switcher__accounts--is-loading'>
-                                    <AccountsItemLoader speed={3} />
-                                </div>
-                            ) : (
-                                <React.Fragment>
-                                    {!!this.demo_mt5.length && (
-                                        <div className='acc-switcher__accounts'>
-                                            {this.demo_mt5.map(account => (
-                                                <AccountList
-                                                    key={account.login}
-                                                    account_type={account.group}
-                                                    balance={account.balance}
-                                                    currency={account.currency}
-                                                    currency_icon={`IcMt5-${getMT5AccountDisplay(account.group)}`}
-                                                    has_balance={'balance' in account}
-                                                    is_virtual
-                                                    loginid={account.display_login}
-                                                    onClickAccount={this.redirectToMt5Demo}
-                                                />
-                                            ))}
-                                        </div>
-                                    )}
-                                    {this.remaining_demo_mt5.map(account => (
-                                        <div key={account.title} className='acc-switcher__new-account'>
-                                            <Icon icon={`IcMt5-${account.icon}`} size={24} />
-                                            <span className='acc-switcher__new-account-text'>{account.title}</span>
-                                            <Button
-                                                onClick={() => this.openMt5DemoAccount(account.type)}
-                                                className='acc-switcher__new-account-btn'
-                                                secondary
-                                                small
-                                            >
-                                                {localize('Add')}
-                                            </Button>
-                                        </div>
-                                    ))}
-                                </React.Fragment>
-                            )}
-                        </AccountWrapper>
-                    </React.Fragment>
-                )}
             </div>
         );
 
@@ -402,80 +350,8 @@ class AccountSwitcher extends React.Component {
                                 </Button>
                             </div>
                         )}
-                        {!this.can_upgrade &&
-                            (this.can_open_multi || this.props.can_change_fiat_currency || !this.has_set_currency) && (
-                                <Button
-                                    className='acc-switcher__btn'
-                                    secondary
-                                    onClick={
-                                        this.has_set_currency
-                                            ? this.props.openRealAccountSignup
-                                            : this.setAccountCurrency
-                                    }
-                                >
-                                    {this.can_open_multi
-                                        ? localize('Add or manage account')
-                                        : localize('Manage account')}
-                                </Button>
-                            )}
                     </AccountWrapper>
                 </React.Fragment>
-                {this.props.is_mt5_allowed && (
-                    <React.Fragment>
-                        <div className='acc-switcher__separator acc-switcher__separator--no-padding' />
-                        <AccountWrapper
-                            header={<Localize i18n_default_text='DMT5 Accounts' />}
-                            is_visible={this.state.is_real_dmt5_visible}
-                            toggleVisibility={() => {
-                                this.toggleVisibility('real_dmt5');
-                            }}
-                        >
-                            {this.props.is_loading_mt5 ? (
-                                <div className='acc-switcher__accounts--is-loading'>
-                                    <AccountsItemLoader speed={3} />
-                                </div>
-                            ) : (
-                                <React.Fragment>
-                                    {!!this.real_mt5.length && (
-                                        <div className='acc-switcher__accounts'>
-                                            {this.real_mt5.map(account => (
-                                                <AccountList
-                                                    key={account.login}
-                                                    account_type={account.group}
-                                                    balance={account.balance}
-                                                    currency={account.currency}
-                                                    currency_icon={`IcMt5-${getMT5AccountDisplay(account.group)}`}
-                                                    has_balance={'balance' in account}
-                                                    loginid={account.display_login}
-                                                    onClickAccount={this.redirectToMt5Real}
-                                                />
-                                            ))}
-                                        </div>
-                                    )}
-                                    {this.remaining_real_mt5.map(account => (
-                                        <div key={account.title} className='acc-switcher__new-account'>
-                                            <Icon icon={`IcMt5-${account.icon}`} size={24} />
-                                            <span className='acc-switcher__new-account-text'>{account.title}</span>
-                                            <Button
-                                                onClick={() => this.openMt5RealAccount(account.type)}
-                                                className='acc-switcher__new-account-btn'
-                                                secondary
-                                                small
-                                                is_disabled={
-                                                    !this.props.has_any_real_account ||
-                                                    (account.type === 'financial_stp' &&
-                                                        this.props.is_pending_authentication)
-                                                }
-                                            >
-                                                {localize('Add')}
-                                            </Button>
-                                        </div>
-                                    ))}
-                                </React.Fragment>
-                            )}
-                        </AccountWrapper>
-                    </React.Fragment>
-                )}
             </div>
         );
 

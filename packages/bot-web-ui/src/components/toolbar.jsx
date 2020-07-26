@@ -24,7 +24,7 @@ const SearchBox = ({ is_search_loading, onSearch, onSearchBlur, onSearchClear, o
                                 className='toolbar__form-field'
                                 type='text'
                                 name='search'
-                                placeholder={localize('Search block...')}
+                                placeholder={localize('SHOWOOOWW block...')}
                                 onKeyUp={() => onSearchKeyUp(submitForm)}
                                 onFocus={submitForm}
                                 onBlur={onSearchBlur}

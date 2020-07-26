@@ -13,7 +13,7 @@ import SetAccountCurrencyModal from 'App/Containers/SetAccountCurrencyModal';
 import NewVersionNotification from 'App/Containers/new-version-notification.jsx';
 import { connect } from 'Stores/connect';
 import { clientNotifications } from 'Stores/Helpers/client-notifications';
-import { header_links } from 'App/Constants/header-links';
+// import { header_links } from 'App/Constants/header-links';
 import ToggleMenuDrawer from 'App/Components/Layout/Header/toggle-menu-drawer.jsx';
 import { AccountsInfoLoader } from 'App/Components/Layout/Header/Components/Preloader';
 
@@ -21,12 +21,20 @@ class Header extends React.Component {
     toggle_menu_drawer_ref = React.createRef();
 
     addUpdateNotification = () => {
-        this.props.addNotificationMessage(clientNotifications().new_version_available);
+        // this.props.addNotificationMessage(clientNotifications().new_version_available);
     };
 
     onClickDeposit = () => {
         this.props.history.push(routes.cashier_deposit);
     };
+
+    componentWillUnmount() {
+        // document.removeEventListener('UpdateAvailable', this.addUpdateNotification);
+    }
+
+    componentDidMount() {
+        // document.addEventListener('UpdateAvailable', this.addUpdateNotification);
+    }
 
     render() {
         const {
@@ -109,7 +117,7 @@ class Header extends React.Component {
                                 <div className='header__menu-left-extensions'>{header_extension}</div>
                             )}
                         </MobileWrapper>
-                        <MenuLinks is_logged_in={is_logged_in} items={header_links} />
+                        {/* <MenuLinks is_logged_in={is_logged_in} items={header_links} /> */}
                     </div>
                     <div
                         className={classNames('header__menu-right', {
