@@ -12,7 +12,7 @@ export const isMT5 = () =>
     /^\/mt5/.test(window.location.pathname) ||
     (/^\/(br_)/.test(window.location.pathname) && window.location.pathname.split('/')[2] === 'mt5');
 
-export const getPlatformHeader = routing_history => {s
+export const getPlatformHeader = routing_history => {
     return 'TEEDBot';
 };
 
