@@ -5,13 +5,13 @@ const { openChromeBasedOnPlatform } = require('./helpers');
 module.exports = function(env, argv) {
     const base = env && env.base && env.base !== true ? '/' + env.base + '/' : '/';
     const sub_path = env && env.open && env.open !== true ? env.open : '';
-
+    const local = window.location.hostname;
     return {
         context: path.resolve(__dirname, '../src'),
         devServer: {
             open: openChromeBasedOnPlatform(process.platform),
             openPage: sub_path,
-            host: 'localhost.binary.sx',
+            host: local,
             https: true,
             port: 443,
             historyApiFallback: true,
