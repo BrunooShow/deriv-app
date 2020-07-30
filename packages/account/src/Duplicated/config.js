@@ -10,7 +10,7 @@
  */
 const domain_app_ids = {
     // these domains as supported "production domains"
-    'deriv.app': 16929,
+    'stoic-einstein-3e51b4.netlify.app': 23035,
 };
 
 const getCurrentProductionDomain = () =>
